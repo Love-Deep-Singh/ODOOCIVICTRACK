@@ -70,7 +70,6 @@ useEffect(() => {
             >
                 + Report New Issue
             </button>
-            <FilterBar currentFilter={filter} onFilterChange={setFilter} />
             <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px' }}>
