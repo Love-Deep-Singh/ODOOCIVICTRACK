@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-export const createIssue = async (data) => {
-  const response = await axios.post('/issues', data);
+const token = localStorage.getItem('token');
+export const createIssue = async (data, token) => {
+  const response = await axios.post('http://localhost:3000/api/issues', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
   return response.data;
 };
 

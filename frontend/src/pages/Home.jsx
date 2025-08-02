@@ -4,6 +4,7 @@ import FilterBar from '../components/FilterBar';
 import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
 import { getNearbyIssues } from '../services/issue';
+import { useNavigate } from 'react-router-dom';
 
 const mockIssues = [
     {
@@ -24,9 +25,11 @@ const Home = () => {
     const [page, setPage] = useState(1);
     const [issues, setIssues] = useState(mockIssues);
     const [loading, setLoading] = useState(true);
-    const [lat, setLat] = useState(12.97); // Example latitude
-    const [lng, setLng] = useState(77.59); // Example longitude
+    
+    const [lat, setLat] = useState(30.7658752); // Example latitude
+    const [lng, setLng] = useState(76.6738432); // Example longitude
     const [distance, setDistance] = useState(5); // Default distance in km
+    const navigate = useNavigate();
    // ...existing code...
 const fetchIssues = async ({ lat, lng, distance }) => {
     if (lat == null || lng == null || distance == null) return;

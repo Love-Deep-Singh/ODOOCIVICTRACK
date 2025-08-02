@@ -3,8 +3,12 @@ import './RegisterForm.css';
 import { registerUser } from '../services/auth'; 
 import { useNavigate } from 'react-router-dom';
 import { saveToken } from '../utils/helper';
+import { useAuth } from '../context/usercontext';
 
 const RegisterForm = () => {
+    const { signup } = useAuth();
+   
+  
     const navigate = useNavigate();
     const handleRegister = async () => {
             const user ={
@@ -15,8 +19,11 @@ const RegisterForm = () => {
             }
             try {
                 const response = await registerUser(user);
+                const id = Math.random().toString(36).substring(2, 10); // simulate unique ID
+                 signup({ id, email });
                 console.log('Registration successful:', response);
                 saveToken(response.token);
+                 
                 
                 setTimeout(() => {
                     alert('Registration successful! Redirecting to home.');

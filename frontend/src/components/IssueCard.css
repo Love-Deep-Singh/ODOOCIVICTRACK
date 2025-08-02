@@ -3,6 +3,8 @@
     border-radius: 8px;
     padding: 12px;
     background-color: #fff;
+    text-decoration: none;
+    color:black;
     width: 100%;
     max-width: 300px;
 }
@@ -24,7 +26,13 @@
     margin-left: 8px;
     text-transform: capitalize;
 }
-
+.issue-img{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
 .status.pending {
     background-color: #ffe08a;
 }

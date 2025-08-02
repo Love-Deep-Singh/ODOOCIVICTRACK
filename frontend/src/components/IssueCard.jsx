@@ -1,10 +1,18 @@
 import React from 'react';
 import './IssueCard.css';
+import { Link } from 'react-router-dom';
 
-const IssueCard = ({ title, description, address, date, status, reporterName }) => {
+const IssueCard = ({ title, description, address, date, status, reporterName,photos }) => {
     return (
-        <div className="issue-card">
-            <div className="image-placeholder">Image</div>
+        <Link className="issue-card"  to={`/issue/123`}>
+
+            {
+            photos && photos.length > 0 ? (
+                <img className='issue-img' src={photos[0]} alt="Issue"  />
+            ):(
+                <div  className="image-placeholder">Image</div>
+            )
+            }
             <div className="issue-info">
                 <h3>{title}</h3>
                 {status && <span className={`status ${status.toLowerCase()}`}>{status}</span>}
@@ -15,7 +23,8 @@ const IssueCard = ({ title, description, address, date, status, reporterName }) 
                 </div>
                 <p className="reporter">Reported by: {reporterName}</p>
             </div>
-        </div>
+
+       </Link>
     );
 };
 
