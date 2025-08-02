@@ -31,7 +31,7 @@ const Home = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h2>CivTrack</h2>
+            {/* <h2>CivicTrack</h2> */}
             <button
                 style={{
                     float: 'right',
