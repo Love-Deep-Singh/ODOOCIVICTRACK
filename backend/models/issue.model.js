@@ -28,8 +28,24 @@ const IssueSchema = new mongoose.Schema({
     required: true
   }
 },
+  address: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 150
+  },
 
-  reporterId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  reporterId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+
+  reporterName: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 100
+  },
   isAnonymous: Boolean,
   status: { type: String, enum: ['Reported', 'In Progress', 'Resolved'], default: 'Reported' },
   flagCount: { type: Number, default: 0 },

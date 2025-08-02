@@ -1,7 +1,7 @@
 import React from 'react';
 import './IssueCard.css';
 
-const IssueCard = ({ title, description, location, date, status, reporter }) => {
+const IssueCard = ({ title, description, address, date, status, reporterName }) => {
     return (
         <div className="issue-card">
             <div className="image-placeholder">Image</div>
@@ -10,10 +10,10 @@ const IssueCard = ({ title, description, location, date, status, reporter }) => 
                 {status && <span className={`status ${status.toLowerCase()}`}>{status}</span>}
                 <p>{description}</p>
                 <div className="meta">
-                    <span>{location}</span>
+                    <span>{address}</span>
                     <span>{date}</span>
                 </div>
-                <p className="reporter">Reported by: {reporter}</p>
+                <p className="reporter">Reported by: {reporterName}</p>
             </div>
         </div>
     );

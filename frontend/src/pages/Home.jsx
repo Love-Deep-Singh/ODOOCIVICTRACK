@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IssueCard from '../components/IssueCard';
 import FilterBar from '../components/FilterBar';
 import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
+import { getNearbyIssues } from '../services/issue';
 
 const mockIssues = [
     {
@@ -17,15 +18,37 @@ const mockIssues = [
 ];
 
 const Home = () => {
+
     const [filter, setFilter] = useState('All Issues');
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
+    const [issues, setIssues] = useState(mockIssues);
+    const [loading, setLoading] = useState(true);
+    const [lat, setLat] = useState(12.97); // Example latitude
+    const [lng, setLng] = useState(77.59); // Example longitude
+    const [distance, setDistance] = useState(5); // Default distance in km
+   // ...existing code...
+const fetchIssues = async ({ lat, lng, distance }) => {
+    if (lat == null || lng == null || distance == null) return;
+    setLoading(true);
+    try {
+        const data = await getNearbyIssues({ lat, lng, distance });
+        setIssues(data);
+        console.log('Fetched issues:', data);
+    } catch (err) {
+        console.error('Failed to fetch nearby issues:', err.response?.data?.message || err.message);
+    } finally {
+        setLoading(false);
+    }
+};
 
-    const filteredIssues = mockIssues
-        .filter((issue) =>
-            filter === 'All Issues' ? true : issue.title.includes(filter)
-        )
-        .filter((issue) => issue.title.toLowerCase().includes(search.toLowerCase()));
+useEffect(() => {
+    if (lat != null && lng != null && distance != null) {
+        fetchIssues({ lat, lng, distance });
+    }
+}, [lat, lng, distance]);
+// ...existing code...
+  console.log(issues, 'Issues fetched from API');
 
     return (
         <div style={{ padding: '20px' }}>
@@ -35,7 +58,7 @@ const Home = () => {
             <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px' }}>
-                {filteredIssues.map((issue, i) => (
+                {issues?.map((issue, i) => (
                     <IssueCard key={i} {...issue} />
                 ))}
             </div>

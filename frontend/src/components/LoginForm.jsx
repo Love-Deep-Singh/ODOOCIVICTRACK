@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
+import { loginUser } from '../services/auth'; // Import the login service
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        if (username.trim() !== '' && password.trim() !== '') {
-            // You can add backend login logic here later
-            navigate('/home');
+    const handleLogin = async () => {
+        
+        if (email && password) {
+
+            const user = {
+                email: email,
+                password: password
+            };
+           try {
+                const response = await loginUser(user);
+                console.log('Registration successful:', response);
+                
+                setTimeout(() => {
+                    alert('Login successful! Redirecting to home.');
+                                    navigate('/')
+                }
+                , 1000);
+            } catch (error) {
+                console.error('Registration failed:', error);
+                alert(error.response?.data?.message || 'Registration failed. Please try again.');
+            }
         } else {
-            alert('Please enter both username and password.');
         }
+        console.log('Login button clicked');
     };
 
     return (
@@ -24,14 +42,16 @@ const LoginForm = () => {
 
                 <input
                     className="login-input"
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    type="mail"
+                    required
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
                     className="login-input"
+                    required
                     type="password"
                     placeholder="Password"
                     value={password}

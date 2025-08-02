@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET || 'civictrack-secret';
 
 exports.registerUser = async (req, res) => {
-  const { email, password, phone } = req.body;
+  const { username,email, password, phone } = req.body;
 
   try {
     const existing = await User.findOne({ email });
@@ -14,6 +14,7 @@ exports.registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
+      username,
       email,
       password: hashedPassword,
       phone,
