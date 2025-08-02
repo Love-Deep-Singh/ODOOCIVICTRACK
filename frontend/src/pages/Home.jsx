@@ -14,7 +14,7 @@ const mockIssues = [
         status: 'Pending',
         reporter: 'Sarah Johnson',
     },
-    // Add more issues as per your image
+    // You can add more mock issues here
 ];
 
 const Home = () => {
@@ -52,8 +52,21 @@ useEffect(() => {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h2>CivTrack</h2>
-            <button style={{ float: 'right' }}>+ Report New Issue</button>
+            {/* <h2>CivicTrack</h2> */}
+            <button
+                style={{
+                    float: 'right',
+                    marginBottom: '10px',
+                    padding: '10px 20px',
+                    background: 'lightgreen',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/create')}
+            >
+                + Report New Issue
+            </button>
             <FilterBar currentFilter={filter} onFilterChange={setFilter} />
             <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 
