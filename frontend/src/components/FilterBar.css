@@ -1,0 +1,17 @@
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.filter-bar button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.filter-bar button.active {
+    background-color: #a2e7b6;
+}

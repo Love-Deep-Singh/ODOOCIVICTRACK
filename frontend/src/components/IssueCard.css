@@ -1,0 +1,38 @@
+.issue-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+}
+
+.image-placeholder {
+    height: 120px;
+    background-color: #d1f2c4;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    text-transform: capitalize;
+}
+
+.status.pending {
+    background-color: #ffe08a;
+}
+
+.status.in\ progress {
+    background-color: #a0d2eb;
+}
+
+.status.resolved {
+    background-color: #9ae6b4;
+}
