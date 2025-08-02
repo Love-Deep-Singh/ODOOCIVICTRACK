@@ -1,0 +1,45 @@
+.create-issue-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #f3fff5;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.create-issue-container h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #207d4f;
+}
+
+.create-issue-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.create-issue-container input,
+.create-issue-container textarea,
+.create-issue-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.create-issue-container button {
+    background-color: #34c471;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.create-issue-container button:hover {
+    background-color: #28a65e;
+}

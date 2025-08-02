@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IssueCard from '../components/IssueCard';
 import FilterBar from '../components/FilterBar';
 import SearchBar from '../components/SearchBar';
@@ -13,13 +14,14 @@ const mockIssues = [
         status: 'Pending',
         reporter: 'Sarah Johnson',
     },
-    // Add more issues as per your image
+    // You can add more mock issues here
 ];
 
 const Home = () => {
     const [filter, setFilter] = useState('All Issues');
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
+    const navigate = useNavigate();
 
     const filteredIssues = mockIssues
         .filter((issue) =>
@@ -30,7 +32,20 @@ const Home = () => {
     return (
         <div style={{ padding: '20px' }}>
             <h2>CivTrack</h2>
-            <button style={{ float: 'right' }}>+ Report New Issue</button>
+            <button
+                style={{
+                    float: 'right',
+                    marginBottom: '10px',
+                    padding: '10px 20px',
+                    background: 'lightgreen',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/create')}
+            >
+                + Report New Issue
+            </button>
             <FilterBar currentFilter={filter} onFilterChange={setFilter} />
             <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 
