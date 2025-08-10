@@ -9,7 +9,15 @@
     /* light green gradient */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.login-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
 
+.highlight {
+    color: #2c7a3f;
+}
 .register-box {
     background-color: #ffffff;
     padding: 40px 30px;

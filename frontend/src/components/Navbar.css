@@ -1,30 +1,114 @@
-/* src/components/Navbar.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, #a8e063, #56ab2f);
-    /* light green gradient */
-    padding: 12px 24px;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: rgba(31, 111, 74, 0.25); /* Semi-transparent green */
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .site-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-links a {
-    margin-left: 16px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: opacity 0.2s ease-in-out;
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
+.navbar-links a,
+.logout-button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover,
 .navbar-links a:hover {
-    opacity: 0.8;
+  background: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hamburger span {
+  background: white;
+  height: 3px;
+  width: 25px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(31, 111, 74, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    display: none;
+    width: 100vw;
+    height: 70vh;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .navbar-links.open {
+    display: flex;
+    animation: fadeSlideDown 0.3s ease;
+  }
+}
+
+/* Animation for dropdown menu */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

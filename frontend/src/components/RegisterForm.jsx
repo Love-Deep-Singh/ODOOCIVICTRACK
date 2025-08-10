@@ -47,7 +47,7 @@ const RegisterForm = () => {
     return (
         <div className="register-container">
             <div className="register-box">
-                <h2 className="register-title">Register for <span className="highlight">CivTrack</span></h2>
+                <h2 className="login-title">Register For Civ<span className="highlight">Track</span></h2>
                 <p className="register-subtitle">Create your account to get started</p>
 
                 <input className="register-input" value={username}  onChange={(e)=>setUsername(e.target.value)} type="text" placeholder="Enter your username" />

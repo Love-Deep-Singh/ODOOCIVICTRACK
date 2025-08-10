@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+  .search-create-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-create-container button {
+    width: 70;
+  }
+}

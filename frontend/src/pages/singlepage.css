@@ -1,66 +1,104 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #e8f5e9;
-  margin: 0;
+background: #2A7B9B;
+background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 100%, rgba(237, 221, 83, 1) 100%);
   padding: 0;
 }
 
-.civic-container {
-  width:90%;
-  margin: auto;
+.app-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin-top: 20px;
+  animation: fadeInDown 0.8s ease-in-out;
 }
 
-
-.status-single{
-    padding:1rem;
-    border-radius: 10px;
-    background-color: #c8e6c9;
-    margin-bottom: 1rem;
-}
-.filters {
+.issue-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.filters select,
-.filters input {
-  padding: 8px;
-  margin: 4px;
-  border-radius: 5px;
-  border: 1px solid #a5d6a7;
-  background-color: #f1f8e9;
+.issue-card-glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: fadeUp 0.9s ease forwards;
+  transform: translateY(20px);
 }
 
-
-
-.civic-content img {
-  width: 80vw;
-  height: 50vh;
-  object-fit: cover;
+.issue-image {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  animation: scaleUp 0.6s ease;
 }
 
-
-
-.activity-log {
-  font-size: 13px;
-  background-color: #f0f4c3;
-  padding: 10px;
-  border-radius: 6px;
+.issue-content {
+  color: white;
 }
 
-.back-button {
-  background-color: #81c784;
-  color: #fff;
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.status-badge {
+  display: inline-block;
   padding: 8px 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 12px;
+  border-radius: 12px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.back-button:hover {
-  background-color: #66bb6a;
+.status-badge.open {
+  background: rgba(76, 175, 80, 0.3);
+  color: white;
+}
+
+.status-badge.reported {
+  background: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+.status-badge.resolved {
+  background: rgba(33, 150, 243, 0.3);
+  color: white;
+}
+
+.meta, .reporter {
+  margin-bottom: 8px;
+}
+
+.update-section {
+  margin-top: 15px;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }

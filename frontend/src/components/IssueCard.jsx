@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './IssueCard.css';
 import { Link } from 'react-router-dom';
+import { getIssueById } from '../services/issue';
 
-const IssueCard = ({ title, description, address, date, status, reporterName,photos }) => {
+const IssueCard = ({ title,_id, description, address, date, status, reporterName,photos }) => {
+
+
     return (
-        <Link className="issue-card"  to={`/issue/123`}>
-
+        <Link className="issue-card"  
+                    to={`/issue/${_id}`}
+        >
             {
             photos && photos.length > 0 ? (
                 <img className='issue-img' src={photos[0]} alt="Issue"  />

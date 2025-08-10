@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
 import { getNearbyIssues } from '../services/issue';
 import { useNavigate } from 'react-router-dom';
-
+import './Home.css'; // Assuming you have some styles for Home page
 const mockIssues = [
     {
         title: 'Garbage Overflow on Main Street',
@@ -54,32 +54,51 @@ useEffect(() => {
   console.log(issues, 'Issues fetched from API');
 
     return (
-        <div style={{ padding: '20px' }}>
-            {/* <h2>CivicTrack</h2> */}
-            <button
-                style={{
-                    float: 'right',
-                    marginBottom: '10px',
-                    padding: '10px 20px',
-                    background: 'lightgreen',
-                    border: 'none',
-                    borderRadius: '6px',
-                    cursor: 'pointer'
-                }}
-                onClick={() => navigate('/create')}
-            >
-                + Report New Issue
-            </button>
-            <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+       <div style={{ width: '90vw', marginInline: "auto" ,marginTop: '20px'}}>
+    <div 
+        style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '10px'
+        }}
+        className="search-create-container"
+    >
+        <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px' }}>
-                {issues?.map((issue, i) => (
-                    <IssueCard key={i} {...issue} />
-                ))}
-            </div>
+        <button
+            style={{
+                padding: '10px 20px',
+                background: 'lightgreen',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer'
+            }}
+            onClick={() => navigate('/create')}
+        >
+            + Report New Issue
+        </button>
+    </div>
 
-            <Pagination currentPage={page} totalPages={3} onPageChange={setPage} />
-        </div>
+    <div 
+        style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: '16px', 
+            marginTop: '20px',
+            justifyContent: 'center' // center cards on mobile
+        }}
+    >
+        {issues?.map((issue, i) => (
+            <IssueCard key={i} {...issue} />
+        ))}
+    </div>
+
+    <Pagination currentPage={page} totalPages={3} onPageChange={setPage} />
+</div>
+
     );
 };
 

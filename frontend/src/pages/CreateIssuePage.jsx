@@ -137,8 +137,8 @@ export default function Home() {
       <label>Photos</label>
       <input type="file" multiple onChange={handleFileChange} accept="image/*" />
 
-      <button type="submit" disabled={loading}>
-        {loading ? 'Submitting...' : 'Create Issue'}
+      <button type="submit" >
+        {'Create Issue'}
       </button>
     </form>
     </div>

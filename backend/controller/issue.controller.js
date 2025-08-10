@@ -58,6 +58,20 @@ exports.flagIssue = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+exports.getIssueById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const issue = await Issue
+      .findById(id)
+      .populate('photos')
+      .populate('reporterName', 'username email phone isAnonymous');
+    if (!issue) return res.status(404).json({ message: 'Issue not found' });
+    res.json(issue);
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 exports.updateStatus = async (req, res) => {
   const { id } = req.params;
